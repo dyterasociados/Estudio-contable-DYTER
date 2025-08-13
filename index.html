@@ -3,7 +3,7 @@
 <head>
     <!-- Chosen Palette: Corporate Professional (Navy, Green, Gray) -->
     <!-- Application Structure Plan: The application uses a single-page, top-to-bottom linear structure, which is ideal for a professional services firm. The user journey is designed to be intuitive: 1) Attract with a strong value proposition in the Hero section. 2) Detail the offerings in the Services section. 3) Build trust in the About Us section. 4) Convert the user with clear calls-to-action (Contact Form and a persistent WhatsApp button). This structure logically guides the user from interest to conversion. The navigation is sticky for constant access to all sections. -->
-    <!-- Visualization & Content Choices: Report Info: Services -> Goal: Organize & Inform -> Viz/Presentation: Interactive Cards (HTML/CSS Grid) -> Interaction: Hover effects to provide feedback. Justification: Cards are modular, easy to edit, and visually separate distinct services. CSS Grid ensures a modern, responsive layout. Report Info: Contact -> Goal: Generate Leads -> Viz/Presentation: HTML Form -> Interaction: AJAX submission with JS Fetch. Justification: Provides instant user feedback (success/error) without page reloads, improving UX. The floating WhatsApp button offers a low-friction, immediate contact alternative. -->
+    <!-- Visualization & Content Choices: Report Info: Services -> Goal: Organize & Inform -> Viz/Presentation: Interactive Cards (HTML/CSS Grid) -> Interaction: Hover effects to provide feedback. Justification: Cards are modular, easy to edit, and visually separate distinct services. CSS Grid ensures a modern, responsive layout. Report Info: Contact -> Goal: Generate Leads -> Viz/Presentation: HTML Form -> Interaction: Generates WhatsApp link for direct chat. Justification: Provides a direct, low-friction contact method that aligns with user preference for instant messaging. The floating WhatsApp button offers a low-friction, immediate contact alternative. -->
     <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
 
     <meta charset="UTF-8">
@@ -109,7 +109,7 @@
             <div class="container mx-auto px-4 fade-in-section">
                 <h1 class="text-4xl md:text-6xl font-bold mb-4">Soluciones Contables y Tributarias para tu Negocio</h1>
                 <p class="text-lg md:text-xl mb-8 max-w-3xl mx-auto">Tus cuentas en buenas manos. Nos ocupamos de tus números con el mismo cuidado que tú pones en tu negocio, para que vivas tranquilo y te concentres en lo que realmente importa.</p>
-                <a href="#contacto" class="bg-accent hover:bg-accent-dark text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105">
+                <a href="https://wa.me/51997297866?text=Hola,%20quisiera%20solicitar%20una%20asesoria%20contable." target="_blank" class="bg-accent hover:bg-accent-dark text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105">
                     Solicitar Asesoría
                 </a>
             </div>
@@ -175,7 +175,7 @@
                     </div>
                     <div class="mb-4">
                         <label for="email" class="block text-gray-700 font-bold mb-2">Correo Electrónico</label>
-                        <input type="email" id="email" name="email" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent" required>
+                        <input type="email" id="email" name="email" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent">
                     </div>
                     <div class="mb-4">
                         <label for="phone" class="block text-gray-700 font-bold mb-2">Teléfono</label>
@@ -186,8 +186,8 @@
                         <textarea id="message" name="message" rows="5" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent" required></textarea>
                     </div>
                     <div class="text-center">
-                        <button type="submit" class="bg-accent hover:bg-accent-dark text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105">
-                            Enviar Mensaje
+                        <button type="button" id="whatsapp-submit-button" class="bg-accent hover:bg-accent-dark text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105">
+                            Enviar Mensaje por WhatsApp
                         </button>
                     </div>
                 </form>
@@ -200,25 +200,23 @@
             <div class="grid md:grid-cols-3 gap-8 mb-8">
                 <div>
                     <h3 class="text-xl font-bold mb-4">Estudio Contable DYTER</h3>
-                    <p class="text-gray-400">Tu aliado para el éxito financiero.</p>
+                    <p class="text-gray-400">Cuidamos tus cuentas, impulsamos tu futuro</p>
                 </div>
                 <div>
                     <h3 class="text-xl font-bold mb-4">Contacto</h3>
+                    
                     <p class="text-gray-400">
-                        <i class="fas fa-map-marker-alt mr-2"></i>Av. Principal 123, Lima, Perú
+                        <i class="fas fa-envelope mr-2"></i><a href="mailto:dyuterasociados@gmail.com" class="hover:text-accent">dyuterasociados@gmail.com</a>
                     </p>
                     <p class="text-gray-400">
-                        <i class="fas fa-envelope mr-2"></i><a href="mailto:contacto@estudioyurik.com" class="hover:text-accent">contacto@estudioyurik.com</a>
-                    </p>
-                    <p class="text-gray-400">
-                        <i class="fas fa-phone mr-2"></i><a href="tel:+51987654321" class="hover:text-accent">+51 987 654 321</a>
+                        <i class="fas fa-phone mr-2"></i><a href="tel:+51997297866" class="hover:text-accent">+51 997297866</a>
                     </p>
                 </div>
                 <div>
                     <h3 class="text-xl font-bold mb-4">Síguenos</h3>
                     <div class="flex justify-center space-x-4">
                         <a href="#" class="text-2xl hover:text-accent transition duration-300"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="text-2xl hover:text-accent transition duration-300"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="text-2xl hover:text-accent transition duration-300"><i class="fab fa-tiktok"></i></a>
                         <a href="#" class="text-2xl hover:text-accent transition duration-300"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
@@ -229,7 +227,7 @@
         </div>
     </footer>
 
-    <a href="https://wa.me/51987654321?text=Hola,%20estoy%20interesado%20en%20sus%20servicios%20contables." 
+    <a href="https://wa.me/51997297866?text=Hola,%20estoy%20interesado%20en%20sus%20servicios%20contables." 
        target="_blank" 
        class="fixed bottom-5 right-5 bg-green-500 text-white w-14 h-14 rounded-full flex items-center justify-center text-3xl shadow-lg hover:bg-green-600 transition duration-300 transform hover:scale-110"
        aria-label="Contactar por WhatsApp">
@@ -252,42 +250,40 @@
                 });
             });
 
-            const contactForm = document.getElementById('contact-form');
+            const whatsappSubmitButton = document.getElementById('whatsapp-submit-button');
             const formResponse = document.getElementById('form-response');
             
-            contactForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                const formData = new FormData(this);
-                
-                formResponse.textContent = 'Enviando...';
-                formResponse.className = 'mb-4 p-4 rounded-md bg-blue-100 text-blue-800';
-                formResponse.classList.remove('hidden');
+            whatsappSubmitButton.addEventListener('click', function(e) {
+                e.preventDefault(); // Prevenir el envío por defecto del formulario
 
-                fetch('https://formspree.io/f/YOUR_FORM_ID', {
-                    method: 'POST',
-                    body: formData,
-                    headers: {
-                        'Accept': 'application/json'
-                    }
-                }).then(response => {
-                    if (response.ok) {
-                        formResponse.textContent = '¡Gracias! Tu mensaje ha sido enviado.';
-                        formResponse.className = 'mb-4 p-4 rounded-md bg-green-100 text-green-800';
-                        contactForm.reset();
-                    } else {
-                        response.json().then(data => {
-                            if (Object.hasOwn(data, 'errors')) {
-                                formResponse.textContent = data["errors"].map(error => error["message"]).join(", ")
-                            } else {
-                                formResponse.textContent = 'Oops! Hubo un problema al enviar tu formulario.';
-                                formResponse.className = 'mb-4 p-4 rounded-md bg-red-100 text-red-800';
-                            }
-                        })
-                    }
-                }).catch(error => {
-                    formResponse.textContent = 'Oops! Hubo un problema al enviar tu formulario.';
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+                const phone = document.getElementById('phone').value;
+                const message = document.getElementById('message').value;
+
+                // Validar que al menos el nombre y el mensaje no estén vacíos
+                if (!name || !message) {
+                    formResponse.textContent = 'Por favor, completa tu nombre y tu mensaje.';
                     formResponse.className = 'mb-4 p-4 rounded-md bg-red-100 text-red-800';
-                });
+                    formResponse.classList.remove('hidden');
+                    return;
+                }
+
+                let whatsappMessage = `Hola, mi nombre es ${name}.`;
+                if (email) whatsappMessage += ` Mi correo es ${email}.`;
+                if (phone) whatsappMessage += ` Mi teléfono es ${phone}.`;
+                whatsappMessage += ` Mi consulta es: ${message}`;
+
+                const encodedMessage = encodeURIComponent(whatsappMessage);
+                const whatsappUrl = `https://wa.me/51997297866?text=${encodedMessage}`;
+
+                window.open(whatsappUrl, '_blank'); // Abrir WhatsApp en una nueva pestaña
+
+                formResponse.textContent = '¡Gracias! Se abrirá una conversación de WhatsApp para que envíes tu mensaje.';
+                formResponse.className = 'mb-4 p-4 rounded-md bg-green-100 text-green-800';
+                formResponse.classList.remove('hidden');
+                
+                document.getElementById('contact-form').reset(); // Limpiar el formulario
             });
 
             const sections = document.querySelectorAll('.fade-in-section');
