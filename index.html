@@ -44,10 +44,10 @@
         .hover\:bg-accent-dark:hover { background-color: var(--color-accent-dark); }
         
         .hero-section {
-            background-image: linear-gradient(rgba(10, 37, 64, 0.7), rgba(10, 37, 64, 0.7)), url('http://googleusercontent.com/file_content/2');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
+            background-color: var(--color-primary); /* Fondo azul sólido */
+            background-size: cover; /* Se mantiene para compatibilidad, aunque no es estrictamente necesario para un color sólido */
+            background-position: center; /* Se mantiene para compatibilidad */
+            /* Se elimina background-image y background-attachment si existían */
         }
         
         .service-card {
