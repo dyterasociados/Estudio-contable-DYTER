@@ -3,7 +3,7 @@
 <head>
     <!-- Chosen Palette: Corporate Professional (Navy, Green, Gray) -->
     <!-- Application Structure Plan: The application uses a single-page, top-to-bottom linear structure, which is ideal for a professional services firm. The user journey is designed to be intuitive: 1) Attract with a strong value proposition in the Hero section. 2) Detail the offerings in the Services section. 3) Build trust in the About Us section. 4) Convert the user with clear calls-to-action (Contact Form and a persistent WhatsApp button). This structure logically guides the user from interest to conversion. The navigation is sticky for constant access to all sections. -->
-    <!-- Visualization & Content Choices: Report Info: Services -> Goal: Organize & Inform -> Viz/Presentation: Interactive Cards (HTML/CSS Grid) -> Interaction: Hover effects to provide feedback. Justification: Cards are modular, easy to edit, and visually separate distinct services. CSS Grid ensures a modern, responsive layout. Report Info: Contact -> Goal: Generate Leads -> Viz/Presentation: HTML Form -> Interaction: Generates WhatsApp link for direct chat. Justification: Provides a direct, low-friction contact method that aligns with user preference for instant messaging. The floating WhatsApp button offers a low-friction, immediate contact alternative. -->
+    <!-- Visualization & Content Choices: Report Info: Services -> Goal: Organize & Inform -> Viz/Presentation: Interactive Cards (HTML/CSS Grid) -> Interaction: Hover effects to provide feedback. Justification: Cards are modular, easy to edit, and visually separate distinct services. CSS Grid ensures a modern, responsive layout. Report Info: Contact -> Goal: Generate Leads -> Viz/Presentation: HTML Form -> Interaction: AJAX submission with JS Fetch to Formspree. Justification: Provides instant user feedback (success/error) without page reloads, improving UX. The floating WhatsApp button offers a low-friction, immediate contact alternative. -->
     <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
 
     <meta charset="UTF-8">
@@ -44,7 +44,7 @@
         .hover\:bg-accent-dark:hover { background-color: var(--color-accent-dark); }
         
         .hero-section {
-            background-image: linear-gradient(rgba(10, 37, 64, 0.7), rgba(10, 37, 64, 0.7)), url('https://placehold.co/1920x1080/667eea/2c3e50?text=Imagen+Corporativa');
+            background-image: linear-gradient(rgba(10, 37, 64, 0.7), rgba(10, 37, 64, 0.7)), url('http://googleusercontent.com/file_content/2');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -109,9 +109,7 @@
             <div class="container mx-auto px-4 fade-in-section">
                 <h1 class="text-4xl md:text-6xl font-bold mb-4">Soluciones Contables y Tributarias para tu Negocio</h1>
                 <p class="text-lg md:text-xl mb-8 max-w-3xl mx-auto">Tus cuentas en buenas manos. Nos ocupamos de tus números con el mismo cuidado que tú pones en tu negocio, para que vivas tranquilo y te concentres en lo que realmente importa.</p>
-                <a href="https://wa.me/51997297866?text=Hola,%20quisiera%20solicitar%20una%20asesoria%20contable." target="_blank" class="bg-accent hover:bg-accent-dark text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105">
-                    Solicitar Asesoría
-                </a>
+                <!-- El botón "Solicitar Asesoría" ha sido eliminado según tu solicitud. -->
             </div>
         </section>
 
@@ -167,7 +165,7 @@
                 <h2 class="text-3xl md:text-4xl font-bold text-primary mb-2">Ponte en Contacto</h2>
                 <p class="text-gray-600 mb-8 max-w-2xl mx-auto">¿Listo para empezar? Envíanos tus datos y un asesor se comunicará contigo a la brevedad.</p>
                 
-                <form id="contact-form" class="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-lg text-left">
+                <form id="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-lg text-left">
                     <div id="form-response" class="hidden mb-4 p-4 rounded-md"></div>
                     <div class="mb-4">
                         <label for="name" class="block text-gray-700 font-bold mb-2">Nombre Completo</label>
@@ -186,8 +184,8 @@
                         <textarea id="message" name="message" rows="5" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent" required></textarea>
                     </div>
                     <div class="text-center">
-                        <button type="button" id="whatsapp-submit-button" class="bg-accent hover:bg-accent-dark text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105">
-                            Enviar Mensaje por WhatsApp
+                        <button type="submit" class="bg-accent hover:bg-accent-dark text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105">
+                            Enviar Mensaje
                         </button>
                     </div>
                 </form>
@@ -250,40 +248,49 @@
                 });
             });
 
-            const whatsappSubmitButton = document.getElementById('whatsapp-submit-button');
+            const contactForm = document.getElementById('contact-form');
             const formResponse = document.getElementById('form-response');
             
-            whatsappSubmitButton.addEventListener('click', function(e) {
-                e.preventDefault(); // Prevenir el envío por defecto del formulario
-
-                const name = document.getElementById('name').value;
-                const email = document.getElementById('email').value;
-                const phone = document.getElementById('phone').value;
-                const message = document.getElementById('message').value;
-
-                // Validar que al menos el nombre y el mensaje no estén vacíos
-                if (!name || !message) {
-                    formResponse.textContent = 'Por favor, completa tu nombre y tu mensaje.';
-                    formResponse.className = 'mb-4 p-4 rounded-md bg-red-100 text-red-800';
-                    formResponse.classList.remove('hidden');
-                    return;
-                }
-
-                let whatsappMessage = `Hola, mi nombre es ${name}.`;
-                if (email) whatsappMessage += ` Mi correo es ${email}.`;
-                if (phone) whatsappMessage += ` Mi teléfono es ${phone}.`;
-                whatsappMessage += ` Mi consulta es: ${message}`;
-
-                const encodedMessage = encodeURIComponent(whatsappMessage);
-                const whatsappUrl = `https://wa.me/51997297866?text=${encodedMessage}`;
-
-                window.open(whatsappUrl, '_blank'); // Abrir WhatsApp en una nueva pestaña
-
-                formResponse.textContent = '¡Gracias! Se abrirá una conversación de WhatsApp para que envíes tu mensaje.';
-                formResponse.className = 'mb-4 p-4 rounded-md bg-green-100 text-green-800';
-                formResponse.classList.remove('hidden');
+            contactForm.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                const form = e.target;
+                const formData = new FormData(form);
                 
-                document.getElementById('contact-form').reset(); // Limpiar el formulario
+                formResponse.textContent = 'Enviando...';
+                formResponse.className = 'mb-4 p-4 rounded-md bg-blue-100 text-blue-800';
+                formResponse.classList.remove('hidden');
+
+                try {
+                    const response = await fetch(form.action, {
+                        method: form.method,
+                        body: formData,
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    });
+
+                    if (response.ok) {
+                        formResponse.textContent = '¡Gracias! Tu mensaje ha sido enviado.';
+                        formResponse.className = 'mb-4 p-4 rounded-md bg-green-100 text-green-800';
+                        form.reset();
+                    } else {
+                        const data = await response.json();
+                        if (Object.hasOwn(data, 'errors')) {
+                            formResponse.textContent = data["errors"].map(error => error["message"]).join(", ")
+                        } else {
+                            formResponse.textContent = 'Oops! Hubo un problema al enviar tu formulario.';
+                            formResponse.className = 'mb-4 p-4 rounded-md bg-red-100 text-red-800';
+                        }
+                    }
+                } catch (error) {
+                    formResponse.textContent = 'Oops! Hubo un problema al enviar tu formulario.';
+                    formResponse.className = 'mb-4 p-4 rounded-md bg-red-100 text-red-800';
+                    console.error('Error al enviar el formulario:', error);
+                } finally {
+                    setTimeout(() => {
+                        formResponse.classList.add('hidden');
+                    }, 5000);
+                }
             });
 
             const sections = document.querySelectorAll('.fade-in-section');
