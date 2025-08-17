@@ -44,10 +44,29 @@
         .hover\:bg-accent-dark:hover { background-color: var(--color-accent-dark); }
         
         .hero-section {
-            background-color: var(--color-primary); /* Fondo azul sólido */
-            background-size: cover; /* Se mantiene para compatibilidad, aunque no es estrictamente necesario para un color sólido */
-            background-position: center; /* Se mantiene para compatibilidad */
-            /* Se elimina background-image y background-attachment si existían */
+            /* Fondo azul sólido sin imagen ni efectos difuminados */
+            background-color: var(--color-primary); 
+            min-height: 60vh; /* Altura mínima para la sección hero */
+            display: flex; /* Centra el contenido */
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff; /* Asegura que el texto sea blanco para contrastar con el fondo */
+            position: relative; /* Asegura que el contenido esté correctamente posicionado */
+            overflow: hidden; /* Evita desbordamientos */
+        }
+        
+        /* Eliminamos los pseudo-elementos ::before y ::after si se habían añadido para el blur separado */
+        .hero-section::before,
+        .hero-section::after {
+            content: none; 
+        }
+
+        /* Contenido de texto de la hero-section */
+        .hero-section > .container {
+            position: relative; /* Asegura que el contenido esté por encima del fondo */
+            z-index: 3;
+            padding: 8em 1em; /* Ajustar el padding para el tamaño */
         }
         
         .service-card {
@@ -105,7 +124,7 @@
     </header>
 
     <main>
-        <section id="inicio" class="hero-section text-white min-h-screen flex items-center justify-center text-center">
+        <section id="inicio" class="hero-section">
             <div class="container mx-auto px-4 fade-in-section">
                 <h1 class="text-4xl md:text-6xl font-bold mb-4">Soluciones Contables y Tributarias para tu Negocio</h1>
                 <p class="text-lg md:text-xl mb-8 max-w-3xl mx-auto">Tus cuentas en buenas manos. Nos ocupamos de tus números con el mismo cuidado que tú pones en tu negocio, para que vivas tranquilo y te concentres en lo que realmente importa.</p>
@@ -213,9 +232,10 @@
                 <div>
                     <h3 class="text-xl font-bold mb-4">Síguenos</h3>
                     <div class="flex justify-center space-x-4">
-                        <a href="#" class="text-2xl hover:text-accent transition duration-300"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="text-2xl hover:text-accent transition duration-300"><i class="fab fa-tiktok"></i></a>
-                        <a href="#" class="text-2xl hover:text-accent transition duration-300"><i class="fab fa-instagram"></i></a>
+                        <!-- ENLACES A REDES SOCIALES ACTUALIZADOS -->
+                        <a href="https://www.facebook.com/" target="_blank" class="text-2xl hover:text-accent transition duration-300"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.tiktok.com/@dyuterasociados" target="_blank" class="text-2xl hover:text-accent transition duration-300"><i class="fab fa-tiktok"></i></a>
+                        <a href="https://www.instagram.com/consultas.contable/" target="_blank" class="text-2xl hover:text-accent transition duration-300"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
             </div>
